@@ -1,0 +1,181 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body bgcolor="#f9742b">
+		<script language="javascript">
+		var i;
+		var max;
+		var min;
+		var isPlay;
+		var op_turn;
+		var op_num;
+		var first;
+		var isPreview;
+/*
+
+		function keyhd() 
+		{
+			alert("Key code = " + event.keyCode);
+			if (isPreview == 0)
+				return;
+			if (event.keyCode==27)
+					preview_();
+
+		}
+*/
+		function preview_()
+		{
+			if (isPreview == 1)
+			{
+				isPreview = 0;
+				//clearInterval(timer3);
+				document.getElementById("float_content").innerHTML = "";
+				return;
+			}
+			//timer3= setInterval("keyhd(window.event)",50);
+			isPreview = 1;
+			document.getElementById("float_content").style.width = document.body.scrollWidth;
+			document.getElementById("float_content").style.height = document.body.scrollHeight;
+			document.getElementById("float_content").style.opacity = 0.8;
+			document.getElementById("float_content").innerHTML = "<div style=\"width=100%;height=100%\"><br>hihi";
+			//onkeydownHandler();
+		}
+		function play_ ()
+		{
+			if (isPlay == 1)
+			{
+				isPlay = 0;
+				clearInterval(timer1);
+				clearInterval(timer2);
+				show_img.style.opacity = 1;
+				op_turn = -1;
+				play_btn.src = "res/Play.png";
+				return;
+			}
+			play_btn.src = "res/Stop.png";
+			isPlay = 1;
+			op_num = 0;
+			first = 1;
+			timer1= setInterval("play_pic()",50);
+			timer2= setInterval("test()",50);
+		}
+		function test()
+		{
+			if (op_turn == -1)	
+			{
+				show_img.style.opacity = show_img.style.opacity -0.025;
+				if (show_img.style.opacity <= 0)
+				{
+					op_turn = 1;
+					op_num = 1;
+				}
+			}
+			else
+			{
+					op_num++;
+					show_img.style.opacity =0.025*op_num;
+				if (show_img.style.opacity >= 1)
+				{
+					op_turn = -1;
+					op_num = 0;
+				}
+			}
+		}
+		function play_pic()
+		{
+			if ( show_img.style.opacity !=0)
+				return;
+			i++;
+			if ( i > max)
+				i = min;
+			show_img.src = "res/pic"+i+".jpg";
+		}
+		function click_(index)
+		{
+			i = index;
+			show_img.src = "res/pic"+i+".jpg";
+		}
+		function change_(str)
+		{
+			if (str == 1)
+			{
+				i--;
+				if ( i < min)
+					i = max;
+				show_img.src = "res/pic"+i+".jpg";
+			}
+			if (str == 2)
+			{
+				i++;
+				if ( i > max)
+					i = min;
+				show_img.src = "res/pic"+i+".jpg";
+			}
+		}
+		function init()
+		{
+			op_turn = -1;
+			isPlay = 0;
+			i = 1;
+			isPreview = 0;
+			min = 1;
+			max = 5;
+		}
+		init();
+	function keyFunction() 
+	{
+		alert("Key code = " + event.keyCode);
+		if (event.keyCode==27) {
+		alert("Esc 的內建功能已被取消！");
+		return false;
+	} else if (event.keyCode==8) {
+		alert("Backspace 的內建功能已被取消！");
+		return false;
+	} else if (event.keyCode==9) {
+		alert("Tab 的內建功能已被取消！");
+		return false;
+	} else if (event.keyCode==71) {
+		document.location="http://www.google.com";
+	}
+	}
+	document.onkeydown=keyFunction;
+		</script>
+
+		<style type="text/css">
+		.img_{border-style:none;}
+		.img_:hover{opacity:.50;}
+		</style>
+		<style type="text/css">
+		.img_{border-style:none;}
+		.img_:hover{opacity:.50;}
+		</style>
+	<div id="float_content" align="center" style="position: fixed; background-color: #ffffff; width:0px; height:0px; background-color:black;">
+	</div>
+	<div align="center">
+		<table>
+			<tr>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic1.jpg" onClick="click_(1)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic2.jpg" onClick="click_(2)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic3.jpg" onClick="click_(3)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic4.jpg" onClick="click_(4)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic5.jpg" onClick="click_(5)" /></td>
+			</tr>
+		</table>
+	</div>
+	<div name="describe" align="center">
+		說明
+	</div>
+	<br>
+	<div style="text-align:center;">
+	<div style="width:600px; height:600px;text-align:center;margin: 0px auto;">
+					<img name="show_img" align="center" height="350" width="350" src="res/pic1.jpg" style="opacity:1" />
+					<br><br><br>
+					<img style="margin: 0px auto;" align="left" height="40" width="40" src="res/L.png" onClick="change_(1)" />
+					<img name="play_btn" style="margin: 0px auto;" align="center" src="res/Play.png" width="40" height="40" onClick="play_()" />
+					<img name="preview_btn" style="margin: 0px auto;" align="center" src="res/Preview.png" width="40" height="40" onClick="preview_()" />
+					<img style="margin: 0px auto;" align="right" height="40" width="40" src="res/R.png" onClick="change_(2)" />
+	</div>
+	</div>
+	</body>
+</html>

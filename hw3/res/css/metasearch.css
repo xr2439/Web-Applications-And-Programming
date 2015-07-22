@@ -1,0 +1,90 @@
+
+body{background-color:c68dee}
+
+.nav{
+    width: 1000px;
+	height: 50px;
+}
+.info {
+    color: ffffff;
+}
+
+.link {
+    color: ffffff;
+	font: 18px Georgia, "Times New Roman", Times, serif;
+}
+
+.data {
+    color: ffffff;
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 535px;
+}
+	
+.nav1:link{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav1:active{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav1:visited{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav1:hover{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;auto; text-decoration:none;cursor:crosshair;}
+.nav1.select{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;cursor:crosshair;}
+
+.nav2:link{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;auto; text-decoration:none;cursor:crosshair;}
+.nav2:active{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;auto; text-decoration:none;cursor:crosshair;}
+.nav2:visited{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;auto; text-decoration:none;cursor:crosshair;}
+.nav2:hover{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;auto; text-decoration:none;cursor:crosshair;}
+.nav2.select{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;cursor:crosshair;}
+
+.nav3:link{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav3:active{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav3:visited{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav3:hover{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;auto; text-decoration:none;cursor:crosshair;}
+.nav3.select{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;cursor:crosshair;}
+
+.nav4:link{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav4:active{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav4:visited{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav4:hover{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;auto; text-decoration:none;cursor:crosshair;}
+.nav4.select{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;cursor:crosshair;}
+
+.nav5:link{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav5:active{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav5:visited{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; text-decoration:none;cursor:crosshair;}
+.nav5:hover{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;auto; text-decoration:none;cursor:crosshair;}
+.nav5.select{color:c68dee; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:e4e7e5;cursor:crosshair;}
+
+form {
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 500px;
+    background: #5f6b67;
+    padding: 25px 15px 25px 10px;
+    font: 12px Georgia, "Times New Roman", Times, serif;
+    color: #ffffff;
+    border:1px solid #e4e7e5;
+}
+form input[type="text"], form input[type="password"], form input[type="email"] {
+    border: 1px solid #e4e7e5;
+    color: #c68dee;
+    height: 30px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 70%;
+    font-size: 12px;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #e4e7e5;
+}
+form input[type="submit"] {
+    background: #c68dee;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #ffffff;
+    box-shadow: 1px 1px 5px #e4e7e5;
+    border-radius: 3px;
+    cursor: pointer;
+}
+form input[type="submit"]:hover {
+    background: #e4e7e5;
+	color: #c68dee;
+}

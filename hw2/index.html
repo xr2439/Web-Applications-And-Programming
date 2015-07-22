@@ -1,0 +1,236 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body bgcolor="#f9742b">
+		<script language="javascript">
+		var i;
+		var max;
+		var min;
+		var isPlay;
+		var op_turn;
+		var op_num;
+		var first;
+		var isPreview;
+		var barct;
+		var picprect;
+		var contextct;
+		var ispreviewpress;
+		function prechange_(index)
+		{
+			preview_();
+			click_(index);
+		}
+		function previewpress_(x)
+		{
+			if (ispreviewpress == 1)
+			{
+				ispreviewpress = 0;
+				document.getElementById("float_content1").style.display = "inline";
+				document.getElementById("float_content2").style.display = "none";
+				return;
+			}
+			ispreviewpress = 1;
+			document.getElementById("float_content1").style.display = "none";
+			document.getElementById("float_content2").style.width = document.body.scrollWidth;
+			if (600 < window.screen.width)
+			document.getElementById("float_content2").style.height = window.screen.height;
+			else
+			document.getElementById("float_content2").style.height = 600;
+			content = "<br><br><br><div style=\"width=100%;text-align:center;\"><table align=\"center\"><tr>";
+			content= content + "<td>"+"<img style=\"vertical-align : middle;\" width=\"400\" height=\"400\" src=\"res/pic"+x+".jpg\" onclick=\"previewpress_(" +x+ ")\" />"+"</td>";
+			content = content + "</tr></table></div>";
+			content = content + "<div style=\"position: absolute;left: 20px;top: 20px; opacity:.50;\"><img src=\"res/Exit.png\" onClick=\"exit()\"/></div>";
+			document.getElementById("float_content2").innerHTML = content;
+			document.getElementById("float_content2").style.display = "inline";
+			return;
+		}
+		function preview_()
+		{
+			if (isPlay)
+				play_();
+			if (isPreview == 1)
+			{
+				isPreview = 0;
+				document.getElementById("float_content1").style.display = "none";
+				document.getElementById("bar").style.display="inline";
+				document.getElementById("picpre").style.display="inline";
+				return;
+			}
+			isPreview = 1;
+			document.getElementById("float_content1").style.width = window.screen.width;
+			if (window.screen.height < (max/3 +1)*200)
+			document.getElementById("float_content1").style.height = (max/3 +1)*200;
+			else
+			document.getElementById("float_content1").style.height = window.screen.height;
+			content = "<div style=\"width=100%;text-align:center;\"><table align=\"center\"><tr>";
+			for (var x=1; x <= max; x++)
+			{
+				if (((x-1)%3)!=0 || x==1)
+				{
+					content= content + "<td>"+"<img width=\"200\" height=\"200\" src=\"res/pic"+x+".jpg\" onclick=\"previewpress_(" +x+ ")\" />"+"</td>";
+				}
+				else
+				{
+					content = content + "</tr><tr>" + "<td>"+"<img width=\"200\" height=\"200\" src=\"res/pic"+x+".jpg\" onclick=\"previewpress_(" +x+ ")\" />"+"</td>";
+				}
+			}
+			content = content + "</tr></table></div>";
+			content = content + "<div style=\"position: absolute;left: 20px;top: 20px; opacity:.50;\"><img src=\"res/Exit.png\" onClick=\"exit()\"/></div>";
+			//content = "d";
+			//alert (content);
+			document.getElementById("float_content1").innerHTML = content;
+			document.getElementById("float_content1").style.display="inline";
+			//onkeydownHandler();
+		}
+		function play_ ()
+		{
+			if (isPlay == 1)
+			{
+				isPlay = 0;
+				clearInterval(timer1);
+				clearInterval(timer2);
+				show_img.style.opacity = 1;
+				op_turn = -1;
+				play_btn.src = "res/Play.png";
+				return;
+			}
+			play_btn.src = "res/Stop.png";
+			isPlay = 1;
+			op_num = 0;
+			first = 1;
+			timer1= setInterval("play_pic()",50);
+			timer2= setInterval("test()",50);
+		}
+		function test()
+		{
+			if (op_turn == -1)	
+			{
+				op_num++;
+				if (op_num <= 40 && show_img.style.opacity == 1)
+					return;
+				show_img.style.opacity = show_img.style.opacity -0.025;
+				if (show_img.style.opacity <= 0)
+				{
+					op_turn = 1;
+					op_num = 1;
+				}
+			}
+			else
+			{
+					op_num++;
+					show_img.style.opacity =0.025*op_num;
+				if (show_img.style.opacity >= 1)
+				{
+					op_turn = -1;
+					op_num = 0;
+				}
+			}
+		}
+		function play_pic()
+		{
+			if ( show_img.style.opacity !=0)
+				return;
+			i++;
+			if ( i > max)
+				i = min;
+			show_img.src = "res/pic"+i+".jpg";
+		}
+		function click_(index)
+		{
+			i = index;
+			show_img.src = "res/pic"+i+".jpg";
+		}
+		function change_(str)
+		{
+			if (str == 1)
+			{
+				i--;
+				if ( i < min)
+					i = max;
+				show_img.src = "res/pic"+i+".jpg";
+			}
+			if (str == 2)
+			{
+				i++;
+				if ( i > max)
+					i = min;
+				show_img.src = "res/pic"+i+".jpg";
+			}
+		}
+		function init()
+		{
+			//alert (document.body.scrollWidth +"x" +document.body.scrollHeight);
+			op_turn = -1;
+			isPlay = 0;
+			i = 1;
+			isPreview = 0;
+			min = 1;
+			max = 11;
+			ispreviewpress = 0;
+		}
+		init();
+		function keyFunction() 
+		{
+			if (event.keyCode==27)
+			{
+				exit();
+			}
+		}
+		function exit()
+		{
+				if (isPreview==0)
+					return;
+				if (ispreviewpress==1)
+				{
+					previewpress_();
+					return;
+				}
+				preview_();
+		}
+		document.onkeydown=keyFunction;
+		</script>
+
+		<style type="text/css">
+		.img_{border-style:none;}
+		.img_:hover{opacity:.50;}
+		</style>
+	<div id="float_content1" align="center" style="position: absolute;left: 10px;top: 10px; color:white;background-color: rgba(0, 0, 0, .8);:black; display:none;">
+	</div>
+	<div id="float_content2" align="center" style="position: absolute;left: 10px;top: 10px; color:white;background-color: rgba(0, 0, 0, .8);:black; display:none;">
+	</div>
+	<div align="center" id="picpre">
+		<table>
+			<tr>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic1.jpg" onClick="click_(1)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic2.jpg" onClick="click_(2)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic3.jpg" onClick="click_(3)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic4.jpg" onClick="click_(4)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic5.jpg" onClick="click_(5)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic6.jpg" onClick="click_(6)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic7.jpg" onClick="click_(7)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic8.jpg" onClick="click_(8)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic9.jpg" onClick="click_(9)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic10.jpg" onClick="click_(10)" /></td>
+				<td><img class="img_" align="center" height="100" width="100" src="res/pic11.jpg" onClick="click_(11)" /></td>
+			</tr>
+		</table>
+	</div>
+	<div name="describe" align="center" id="context" width="100%" height="20px" style="display:none;">
+		<div align="center">說明</div>
+	</div>
+	<br>
+	<div style="text-align:center;" id="bar">
+	<div style="width:25.5%; height:58%;text-align:center;margin: 0px auto;">
+					<img name="show_img" align="center" height="100%" width="100%" src="res/pic1.jpg" style="opacity:1" />
+					<br><br><br>
+	</div>
+	<div style="width:350; height:50;text-align:center;margin: 0px auto;">
+					<img style="margin: 0px auto;" align="left" height="40" width="40" src="res/L.png" onClick="change_(1)" />
+					<img name="play_btn" style="margin: 0px auto;" align="center" src="res/Play.png" width="40" height="40" onClick="play_()" />
+					<img name="preview_btn" style="margin: 0px auto;" align="center" src="res/Preview.png" width="40" height="40" onClick="preview_()" />
+					<img style="margin: 0px auto;" align="right" height="40" width="40" src="res/R.png" onClick="change_(2)" />
+	</div>
+	</div>
+	</body>
+</html>

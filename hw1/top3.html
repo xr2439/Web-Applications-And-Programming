@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<script language="javascript">
+		function fun(choice)
+		{
+			if (choice == 1)
+			{
+				url_t = "top1.html";
+				url_m = "class.html";
+			}
+			if (choice == 2)
+			{
+				url_t = "top2.html";
+				url_m = "site.html";
+			}
+			if (choice == 3)
+			{
+				url_t = "top3.html";
+				url_m = "about.html";
+			}
+			window.open(url_m,'main');
+			window.location.href= url_t;
+		}
+		</script>
+	</head>
+	<body bgcolor="#ffffff">
+		<style type="text/css">
+		a{color:5f6b67; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%;text-decoration:none;cursor:crosshair;}
+		a.a1:hover{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:f9742b;text-decoration:none;cursor:crosshair;}
+		a.a2:hover{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; background-color:3cb2d0;text-decoration:none;cursor:crosshair;}
+		a.a3{color:ffffff; border-bottom: 1px dotted #e4e7e5;padding: 9px 3% 9px 3%; margin-left: auto; margin-right: auto;background-color:5f6b67;text-decoration:none;cursor:crosshair;}
+		</style>
+				<a class="a1" href="class.html" target="main" onclick="fun(1)">我的課表</a>
+				<a class="a2" href="site.html" target="main" onclick="fun(2)">友情連結</a>
+				<a class="a3" href="about.html" target="main" onclick="fun(3)">關於</a>
+	</body>
+</html>
